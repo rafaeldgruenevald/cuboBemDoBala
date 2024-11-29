@@ -26,6 +26,7 @@ public:
     HANDLE open();        //create connection between intefaces
     void send(char CID);       //send virtual image
     void activate(char CID);           //activate image sent in the cube
+    void clear();
 
     //depois fazer uma funcao pra puxar esses valores (se necessario)
     //e devolver essas buxas pro privado

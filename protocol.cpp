@@ -68,7 +68,7 @@ HANDLE protocol::open()
 void protocol::send(char CID) {
     int n = 10000;
     out[0] = SNC;
-    out[1] = CID|0x80;
+    out[1] = CID;
     WriteFile(pCom, out, 2, &b, NULL);
     do {
         ReadFile(pCom, in, 1, &b, NULL);
@@ -78,20 +78,25 @@ void protocol::send(char CID) {
     if (in[0] != 'M') {
         std::cerr << "Nao autorizado! Comando recebido: " << in[0] << std::endl;
     } else {
-        std::cout << in[0] << std::endl;
+        std::cout << in[0] << " ";
         WriteFile(pCom, copyCube, 512, &b, NULL);
         n = 10000;
         do {
             ReadFile(pCom, in, 1, &b, NULL);
             n--;
         } while (n > 0 && b == 0);
-        std::cout << in[0] << std::endl;
+        std::cout << in[0] << " / ";
     }
 }
 
 void protocol::activate(char CID) {
     out[0] = ATX;
-    out[1] = CID|0x80;
+    out[1] = CID;
     WriteFile(pCom, out, 2, &b, NULL);
 }
 
+void protocol::clear() {
+    out[0] = CLR;
+    out[1] = CLR;
+    WriteFile(pCom, out, 2, &b, NULL);
+}
