@@ -3,12 +3,14 @@
 #include "protocol.h"
 
 image::image() {
-    //intensity = 15;
-    //placeholder to test the protocol
+    full(15);
+}
+
+void image::full(int intensity) {
     for (int x = 0; x < 8; x++) {
         for (int y = 0; y < 8; y++) {
             for (int z = 0; z < 8; z++) {
-                matrix[x][y][z] = 15;
+                matrix[x][y][z] = intensity;
             }
         }
     }
@@ -19,43 +21,23 @@ int image::getCube(int x, int y, int z) {
 }
 
 void image::animationOne(int intensity) {
-    //for (intensity = 0; intensity < 16; intensity++) {
-        for (int x = 0; x < 8; x++) {
-            for (int y = 0; y < 8; y++) {
-                for (int z = 0; z < 8; z++) {
-                    matrix[x][y][z] = intensity;
-                }
-            }
-        }
-        //usleep(1000);
-    //}
-}
-
-void image::animationTwo(image *cube, protocol *prot){
-    //reset cube
     for (int x = 0; x < 8; x++) {
         for (int y = 0; y < 8; y++) {
             for (int z = 0; z < 8; z++) {
-                matrix[x][y][z] = 0;
+                matrix[x][y][z] = intensity;
             }
         }
     }
+}
 
-    int size = 0;
-    while(matrix[7][7][7]<15){  //while the last LED is not fully bright
-        for (int x = 0; x < 8; x++) {
-            for (int y = 0; y < 8; y++) {
-                for (int z = 0; z < 8; z++) {
-                    if(x<=size && y<=size && z<=size && matrix[x][y][z]<15){     //increse brightness of LEDs that fit in "size"
-                        matrix[x][y][z]++;
-                    }
+void image::animationTwo(int pos, int size){
+    for (int x = 0; x < pos; x++) {
+        for (int y = 0; y < pos; y++) {
+            for (int z = 0; z < pos; z++) {
+                if(x<=size && y<=size && z<=size){
+                    matrix[x][y][z] = 15;
                 }
             }
         }
-        prot->getCube(cube);
-        prot->send(0);  //must "send" take another parameter?
-
-        usleep(1000);
-        size++;
     }
 }

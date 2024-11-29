@@ -37,7 +37,7 @@ private:
     HANDLE pCom;           //handler object
     unsigned long int b;   //bytes received
     int baudrate;          //proprietary baudrate
-    char port[6] = "COM3"; //port identification
+    char port[6] = "COM7"; //port identification
     image* cube;           //pointer to virtual cube
 };
 #endif // PROTOCOL_H
