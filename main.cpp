@@ -21,10 +21,14 @@ int main() {
 
     std::cout << "Conexao estabelecida!" << std::endl;
 
+    //run animationOne
     std::cout << "retorno do send: ";
     animationOne(&vcube, &prot);
     //prot.send(0);
     std::cout << std::endl;
+/*
+    //run animationTwo
+    vcube.animationTwo(&vcube, &prot);
 
     std::cout << "retorno do activate: " << std::endl;
     for (int i = 0; i < 16; i++) {
@@ -32,7 +36,7 @@ int main() {
         Sleep(1000);
         std::cout << "ativou imagem " << i << std::endl;
     }
-
+*/
     std::cout << "retorno do clear: ";
     prot.clear();
     std::cout << std::endl;
