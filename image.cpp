@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "image.h"
+#include "protocol.h"
 
 image::image() {
     //intensity = 15;
@@ -30,7 +31,7 @@ void image::animationOne(int intensity) {
     //}
 }
 
-void image::animationTwo(){
+void image::animationTwo(image *cube, protocol *prot){
     //reset cube
     for (int x = 0; x < 8; x++) {
         for (int y = 0; y < 8; y++) {
@@ -51,6 +52,9 @@ void image::animationTwo(){
                 }
             }
         }
+        prot->getCube(cube);
+        prot->send(0);  //must "send" take another parameter?
+
         usleep(1000);
         size++;
     }
