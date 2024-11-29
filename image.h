@@ -2,6 +2,7 @@
 #define IMAGE_H
 
 #include <stdint.h>
+#include "protocol.h"
 
 class image {
 public:
@@ -9,7 +10,7 @@ public:
     //virtual ~image();
     int getCube(int x, int y, int z);
     void animationOne(int intensity);
-    void animationTwo();
+    void animationTwo(image *cube, protocol *prot);
     void animationThree();
     void staticOne();
 private:
