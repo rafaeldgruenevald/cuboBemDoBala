@@ -1,7 +1,7 @@
 #ifndef PROTOCOL_H
 #define PROTOCOL_H
 
-#include "image.h"
+#include "cube.h"
 #include <string>
 #include <iostream>
 #include <stdio.h>
@@ -20,24 +20,17 @@
 
 class protocol {
 public:
-    protocol();                //constructor
-    //virtual ~protocol();     //destructor
-    void getCube(image* cube); //get virtual image thru a pointer
-    HANDLE open();        //create connection between intefaces
-    void send(char CID);       //send virtual image
-    void activate(char CID);           //activate image sent in the cube
+    protocol(int baud, char *p);
+    HANDLE openSerial();
+    void send(char CID, uint8_t c[][8][8]);
+    void activate(char CID);
     void clear();
-
-    //depois fazer uma funcao pra puxar esses valores (se necessario)
-    //e devolver essas buxas pro privado
-    char in[2];  //command received
-    char out[6]; //command sent
+    char in[2];
+    char out[6];
 private:
-    uint8_t copyCube[8][8][8]; //DEPOIS ARRUMAR ESSA GAMBIARRA
-    HANDLE pCom;           //handler object
-    unsigned long int b;   //bytes received
-    int baudrate;          //proprietary baudrate
-    char port[6] = "COM7"; //port identification
-    image* cube;           //pointer to virtual cube
+    HANDLE pCom;
+    unsigned long int b;
+    int baudrate;
+    char port[6];
 };
 #endif // PROTOCOL_H

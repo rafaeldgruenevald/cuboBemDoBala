@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1732909619 source:c:\users\22000200\documents\cubobemdobala\cubobemdobala\main.cpp
+	"cube.h"
+	"protocol.h"
+	<iostream>
+	<stdio.h>
+
+1732907925 c:\users\22000200\documents\cubobemdobala\cubobemdobala\cube.h
+	<stdint.h>
+
+1732909930 c:\users\22000200\documents\cubobemdobala\cubobemdobala\protocol.h
+	"cube.h"
+	<string>
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<conio.h>
+
+1732906399 source:c:\users\22000200\documents\cubobemdobala\cubobemdobala\cube.cpp
+	<unistd.h>
+	"cube.h"
+
+1732908894 source:c:\users\22000200\documents\cubobemdobala\cubobemdobala\protocol.cpp
+	<iostream>
+	"cube.h"
+	"protocol.h"
+	<string.h>
+	<string>
+	<stdlib.h>
+	<Windows.h>
+	<conio.h>
+
