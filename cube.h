@@ -6,8 +6,7 @@
 class cube {
 public:
     cube();
-    uint8_t getMatrix();
-private:
+    void fade(int inten,int h, int b);
     uint8_t matrix[8][8][8];
 };
 #endif

@@ -20,17 +20,18 @@
 
 class protocol {
 public:
-    protocol(int baud, char *p);
+    protocol(int baud, char p[6], int tries);
     HANDLE openSerial();
-    void send(char CID, uint8_t c[][8][8]);
-    void activate(char CID);
+    void sendImg(char nImg, uint8_t mtrxImg[][8][8]);
+    void activateImg(char nImg);
     void clear();
+private:
+    HANDLE comPort;
+    unsigned long int bytesWritten;
+    int baudrate;
+    int nTries;
     char in[2];
     char out[6];
-private:
-    HANDLE pCom;
-    unsigned long int b;
-    int baudrate;
     char port[6];
 };
 #endif // PROTOCOL_H
